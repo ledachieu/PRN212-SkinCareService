@@ -1,0 +1,66 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center my-5">
+    <h1 class="display-4 fw-bold">Welcome</h1>
+    <p class="lead">Skin Care Service Center</p>
+</div>
+
+<!-- Blogs -->
+<h2 class="mt-5 mb-3">📰 Tin tức mới</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var blog in Model.LatestBlogs)
+    {
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="https://www.shutterstock.com/image-photo/bloggingblog-concepts-ideas-white-worktable-600nw-1029506242.jpg" class="card-img-top" alt="Blog Image">
+                <div class="card-body">
+                    <h5 class="card-title">@blog.Title</h5>
+                    <p class="card-text text-muted">Tác giả: @blog.Author?.FullName</p>
+                    <a href="/BlogDetail/@blog.BlogId" class="btn btn-outline-primary">Xem chi tiết</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Services -->
+<h2 class="mt-5 mb-3">💆 Dịch vụ mới</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var service in Model.LatestServices)
+    {
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="https://www.gainesvilledermatologyaestheticcenter.com/content/uploads/posts/32/skincare-services-hero.jpg" class="card-img-top" alt="Service Image">
+                <div class="card-body">
+                    <h5 class="card-title">@service.ServiceName</h5>
+                    <p class="card-text">Giá: <strong>@service.Price.ToString("N0") VND</strong></p>
+                    <a href="/SkinCareDetail?id=@service.ServiceId" class="btn btn-outline-success">Xem chi tiết</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Therapists -->
+<h2 class="mt-5 mb-3">👩‍⚕️ Chuyên viên mới</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var therapist in Model.LatestTherapists)
+    {
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="https://www.skinastute.com/wp-content/uploads/2016/09/canstockphoto20437802-1.jpg" class="card-img-top" alt="Therapist Image">
+                <div class="card-body">
+                    <h5 class="card-title">@therapist.User?.FullName</h5>
+                    <p class="card-text">Chuyên môn: @therapist.Specialization</p>
+                    <p class="card-text">Kinh nghiệm: @therapist.ExperienceYears năm</p>
+                    <p class="card-text">Chứng chỉ: @therapist.Certifications</p>
+                   
+                </div>
+            </div>
+        </div>
+    }
+</div>

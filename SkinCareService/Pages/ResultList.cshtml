@@ -1,0 +1,37 @@
+﻿@page "{bookingId:int}"
+@model ResultListModel
+@{
+    ViewData["Title"] = "Booking Results";
+}
+<h2>Kết quả của Booking #@Model.BookingId</h2>
+
+@if (Model.Results.Count == 0)
+{
+    <p>Chưa có kết quả nào cho Booking này.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Mã Kết Quả</th>
+                <th>Ngày cập nhật</th>
+                <th>Mô tả</th>
+                <th>Therapist</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var result in Model.Results)
+            {
+                <tr>
+                    <td>@result.ResultId</td>
+                    <td>@result.ResultDate?.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@result.ResultDescription</td>
+                    <td>@(result.Therapist?.User?.FullName ?? "N/A")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a class="btn btn-success" asp-page="AddResult" asp-route-bookingId="@Model.BookingId">Thêm Kết Quả Mới</a>

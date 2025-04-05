@@ -1,0 +1,26 @@
+﻿@page
+@model SkinCareService.Pages.ManagerBlogUpdateModel
+@{
+    ViewData["Title"] = "Update Blog";
+}
+
+<h2>Update Blog</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Blog.BlogId" />
+    <input type="hidden" asp-for="Blog.CreatedAt" />
+    <input type="hidden" asp-for="Blog.AuthorId" />
+
+    <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input type="text" class="form-control" asp-for="Blog.Title" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Content</label>
+        <textarea class="form-control" rows="5" asp-for="Blog.Content" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save Changes</button>
+    <a href="/BlogListManager" class="btn btn-secondary">Cancel</a>
+</form>

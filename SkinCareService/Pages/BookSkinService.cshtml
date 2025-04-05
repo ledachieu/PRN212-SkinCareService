@@ -1,0 +1,39 @@
+﻿@page "{serviceId:int}"
+@model SkinCareService.Pages.BookSkinServiceModel
+@{
+    ViewData["Title"] = "Đặt Dịch Vụ";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Đặt Dịch Vụ @Model.Service?.ServiceName</h2>
+
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label">Ngày</label>
+            <input type="date" class="form-control" name="WorkDate" value="@Model.WorkDate?.ToString("yyyy-MM-dd")" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Giờ bắt đầu</label>
+            <input type="time" class="form-control" name="StartTime" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Giờ kết thúc</label>
+            <input type="time" class="form-control" name="EndTime" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Chuyên viên</label>
+            <select name="TherapistId" class="form-select" required>
+                <option value="">-- Chọn chuyên viên --</option>
+                @foreach (var t in Model.Therapists)
+                {
+                    <option value="@t.TherapistId">@t.User?.FullName (@t.Specialization)</option>
+                }
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Xác Nhận Đặt Lịch</button>
+    </form>
+</div>

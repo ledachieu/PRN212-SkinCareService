@@ -1,0 +1,69 @@
+﻿@page
+@model SkinCareService.Pages.SkinCareDetailModel
+@{
+    ViewData["Title"] = "Chi Tiết Dịch Vụ";
+}
+
+<div class="container mt-5">
+    <div class="text-center">
+        <h2 class="fw-bold text-primary">@Model.Service.ServiceName</h2>
+        <p class="text-muted fst-italic">Trải nghiệm dịch vụ chuyên nghiệp</p>
+    </div>
+
+    <div class="card shadow-lg mx-auto border-0 rounded-4 overflow-hidden" style="max-width: 650px;">
+        <div class="position-relative">
+            <img src="https://www.gainesvilledermatologyaestheticcenter.com/content/uploads/posts/32/skincare-services-hero.jpg"
+                 class="card-img-top img-fluid rounded-top-4 service-img"
+                 alt="@Model.Service.ServiceName">
+            <div class="overlay"></div>
+        </div>
+        <div class="card-body text-center">
+            <p class="text-muted fs-5">@Model.Service.Description</p>
+            <p class="fw-bold text-danger fs-4">💰 Giá: @Model.Service.Price.ToString("N0") VNĐ</p>
+            <p class="fw-bold fs-5">⏳ Thời gian: @Model.Service.Duration phút</p>
+            <a href="/SkinCareList" class="btn btn-outline-primary mt-3 w-50 rounded-pill">⬅ Quay lại</a>
+        </div>
+    </div>
+
+    <!-- Danh sách Feedback -->
+    <div class="mt-5">
+        <h3 class="text-center fw-bold">📢 Đánh Giá Từ Khách Hàng</h3>
+        <div class="list-group mt-3">
+            @if (Model.Feedbacks.Any())
+            {
+                @foreach (var feedback in Model.Feedbacks)
+                {
+                    <div class="list-group-item shadow-sm p-3 mb-3 rounded-3">
+                        <h5 class="mb-1">⭐ @feedback.Rating / 5</h5>
+                        <p class="mb-0 fst-italic">@feedback.Comments</p>
+                        <small class="text-muted">🕒 @feedback.CreatedAt?.ToString("dd/MM/yyyy")</small>
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="text-center text-muted">Chưa có đánh giá nào cho dịch vụ này.</p>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .service-img {
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .service-img:hover {
+            transform: scale(1.05);
+        }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+    }
+</style>

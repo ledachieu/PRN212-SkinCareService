@@ -1,0 +1,44 @@
+﻿@page
+@model SkinCareService.Pages.CustomerBookingModel
+@{
+}
+<h2>Danh sách lịch đặt</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ngày đặt</th>
+            <th>Khách hàng</th>
+            <th>Dịch vụ</th>
+            <th>Trạng thái</th>
+            <th>Trạng thái thanh toán</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var b in Model.Bookings)
+        {
+            <tr>
+                <td>@b.BookingDate.ToString("dd/MM/yyyy")</td>
+                <td>@b.Customer?.FullName</td>
+                <td>@b.Service?.ServiceName</td>
+                <td>@b.Status</td>
+                <td>@b.PaymentStatus</td>
+                <td>
+                    @if (b.PaymentStatus == "Not Paid")
+                    {
+                        <a asp-page="MarkPaid" asp-route-id="@b.BookingId" class="btn btn-success btn-sm">Đánh dấu đã thanh toán</a>
+                    }
+                    @if (b.Status != "Completed")
+                    {
+                        <a asp-page="CancelBooking" asp-route-id="@b.BookingId" class="btn btn-danger btn-sm">Hủy</a>
+                    }
+                    @if (b.PaymentStatus == "Paid" && b.Status != "Completed" && b.Status != "Cancelled")
+                    {
+                        <a asp-page="MarkCompleted" asp-route-id="@b.BookingId" class="btn btn-primary btn-sm">Hoàn tất</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

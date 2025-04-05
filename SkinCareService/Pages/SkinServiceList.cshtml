@@ -1,0 +1,49 @@
+﻿@page
+@model SkinCareService.Pages.SkinServiceListModel
+@{
+}
+@{
+    ViewData["Title"] = "Service List";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Skin Services</h2>
+
+    <a href="/SkinServiceCreate" class="btn btn-primary mb-3">Add New Service</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Service Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Duration (Minutes)</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var service in Model.Services)
+            {
+                <tr>
+                    <td>@service.ServiceName</td>
+                    <td>@service.Description</td>
+                    <td>@service.Price.ToString("N0")</td>
+                    <td>@service.Duration</td>
+                    <td>@(service.Status == 1 ? "Enable" : "Disable")</td>
+                    <td>
+                        <a href="/SkinServiceUpdate?serviceId=@service.ServiceId" class="btn btn-warning btn-sm">Update</a>
+                        @if (service.Status == 1)
+                        {
+                            <a href="/SkinServiceBan?serviceId=@service.ServiceId" class="btn btn-danger btn-sm">Disable</a>
+                        }
+                        else
+                        {
+                            <a href="/SkinServiceUnban?serviceId=@service.ServiceId" class="btn btn-success btn-sm">Enable</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

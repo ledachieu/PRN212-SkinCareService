@@ -1,0 +1,19 @@
+﻿@page "{bookingId:int}"
+@model AddResultModel
+@{
+    ViewData["Title"] = "Thêm Kết Quả Mới";
+}
+<h2>Thêm Kết Quả cho Booking #@Model.BookingId</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="BookingId" />
+
+    <div class="mb-3">
+        <label class="form-label">Mô tả kết quả:</label>
+        <textarea class="form-control" asp-for="ResultDescription" rows="4"></textarea>
+        <span class="text-danger" asp-validation-for="ResultDescription"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lưu Kết Quả</button>
+    <a class="btn btn-secondary" asp-page="ResultList" asp-route-bookingId="@Model.BookingId">Quay lại</a>
+</form>

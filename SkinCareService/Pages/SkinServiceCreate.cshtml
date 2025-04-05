@@ -1,0 +1,35 @@
+﻿@page
+@model SkinCareService.Pages.SkinServiceCreateModel
+@{
+}
+@{
+    ViewData["Title"] = "Create Service";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Create Service</h2>
+
+    <form method="post">
+        <div class="form-group mb-3">
+            <label for="serviceName">Service Name</label>
+            <input type="text" id="serviceName" name="ServiceName" class="form-control" required />
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="description">Description</label>
+            <textarea id="description" name="Description" class="form-control" rows="4"></textarea>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="price">Price</label>
+            <input type="number" id="price" name="Price" class="form-control" required />
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="duration">Duration (Minutes)</label>
+            <input type="number" id="duration" name="Duration" class="form-control" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Create Service</button>
+    </form>
+</div>

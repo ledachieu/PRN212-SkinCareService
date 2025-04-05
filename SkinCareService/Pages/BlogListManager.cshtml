@@ -1,0 +1,48 @@
+﻿@page
+@model SkinCareService.Pages.BlogListManagerModel
+@{
+    ViewData["Title"] = "Manage Blogs";
+}
+
+<h2>Blog List</h2>
+<a href="/ManagerBlogCreate" class="btn btn-primary">Create New Blog</a>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var blog in Model.Blogs)
+        {
+            <tr>
+                <td>@blog.Title</td>
+                <td>@blog.Author?.FullName</td>
+                <td>@blog.CreatedAt?.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a href="/ManagerBlogUpdate?blogId=@blog.BlogId" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/ManagerBlogDelete?blogId=@blog.BlogId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Pagination -->
+@if (Model.TotalPages > 1)
+{
+    <nav>
+        <ul class="pagination">
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                    <a class="page-link" href="?pageNumber=@i">@i</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}

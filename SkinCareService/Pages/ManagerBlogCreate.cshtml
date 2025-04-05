@@ -1,0 +1,16 @@
+﻿@page
+@model SkinCareService.Pages.ManagerBlogCreateModel
+@{
+    ViewData["Title"] = "Create Blog";
+}
+
+<h2>Create Blog</h2>
+<form method="post">
+    <label>Title</label>
+    <input type="text" class="form-control" asp-for="Blog.Title" required />
+
+    <label>Content</label>
+    <textarea class="form-control" asp-for="Blog.Content" required></textarea>
+
+    <button type="submit" class="btn btn-success mt-3">Create</button>
+</form>

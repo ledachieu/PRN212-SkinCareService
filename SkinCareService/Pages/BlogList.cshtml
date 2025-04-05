@@ -1,0 +1,28 @@
+﻿@page
+@model SkinCareService.Pages.BlogListModel
+@{
+    ViewData["Title"] = "Danh Sách Blog";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-5">Danh Sách Blog</h2>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var blog in Model.Blogs)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-lg border-light">
+                    <img src="https://www.shutterstock.com/image-photo/bloggingblog-concepts-ideas-white-worktable-600nw-1029506242.jpg" class="card-img-top" alt="Blog Image">
+                    <div class="card-body">
+                        <h5 class="card-title text-truncate" title="@blog.Title">@blog.Title</h5>
+                        <p class="card-text text-muted text-truncate" title="@blog.Content">@blog.Content</p>
+                        <p class="fw-bold">Tác giả: @blog.Author?.FullName</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 text-center">
+                        <a href="/BlogDetail/@blog.BlogId" class="btn btn-primary w-100">Chi Tiết</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

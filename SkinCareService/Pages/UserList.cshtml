@@ -1,0 +1,40 @@
+﻿@page
+@model SkinCareService.Pages.UserListModel
+@{
+}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">User List</h2>
+    <a  href="CreateUser">Create User</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Users)
+            {
+                <tr>
+                    <td>@user.UserId</td>
+                    <td>@user.FullName</td>
+                    <td>@user.Email</td>
+                    <td>@user.Phone</td>
+                    <td>@user.Address</td>
+                    <td>@(user.Status == 1 ? "Active" : "Banned")</td>
+                    <td>
+                        <a href="/UpdateUser?userId=@user.UserId" class="btn btn-primary btn-sm">Update</a>
+                        <a href="/BanUnban?userId=@user.UserId" class="btn btn-warning">
+                            @(user.Status == 1 ? "Ban" : "Unban")
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

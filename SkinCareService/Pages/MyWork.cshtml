@@ -1,0 +1,41 @@
+﻿@page
+@model MyWorkModel
+@{
+    ViewData["Title"] = "My Work - Booking List";
+}
+<h2>Danh sách Booking của bạn</h2>
+
+@if (Model.Bookings.Count == 0)
+{
+    <p>Bạn chưa có booking nào.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Mã Booking</th>
+                <th>Khách hàng</th>
+                <th>Dịch vụ</th>
+                <th>Ngày đặt</th>
+                <th>Trạng thái</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model.Bookings)
+            {
+                <tr>
+                    <td>@booking.BookingId</td>
+                    <td>@(booking.Customer?.FullName ?? "N/A")</td>
+                    <td>@(booking.Service?.ServiceName ?? "N/A")</td>
+                    <td>@booking.BookingDate.ToString("dd/MM/yyyy")</td>
+                    <td>@booking.Status</td>
+                    <td>
+                        <a class="btn btn-primary" asp-page="ResultList" asp-route-bookingId="@booking.BookingId">Xem Kết Quả</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

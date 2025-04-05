@@ -1,0 +1,25 @@
+﻿@page "{id:int}"
+@model SkinCareService.Pages.BlogDetailModel
+@{
+    ViewData["Title"] = "Chi Tiết Blog";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12">
+            <div class="card shadow-lg border-light">
+                <div class="card-header bg-primary text-white text-center py-3">
+                    <h3 class="m-0">@Model.Blog.Title</h3>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">@Model.Blog.Content</p>
+                    <p class="fw-bold">Tác giả: @Model.Blog.Author?.FullName</p>
+                    <p class="fw-bold text-secondary">Ngày tạo: @Model.Blog.CreatedAt?.ToString("dd/MM/yyyy")</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="/BlogList" class="btn btn-secondary btn-lg">Quay lại</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

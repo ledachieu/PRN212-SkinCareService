@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkinCareService", "SkinCareService\SkinCareService.csproj", "{DFC5FEB3-6AA4-4488-8F7D-C2B42D25A87C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{91D41557-58F9-452B-80BE-612C84F8B544}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "DAO\DAO.csproj", "{C3F071C2-251F-40BF-ABEE-FEE12440F9A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFC5FEB3-6AA4-4488-8F7D-C2B42D25A87C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFC5FEB3-6AA4-4488-8F7D-C2B42D25A87C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFC5FEB3-6AA4-4488-8F7D-C2B42D25A87C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFC5FEB3-6AA4-4488-8F7D-C2B42D25A87C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91D41557-58F9-452B-80BE-612C84F8B544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91D41557-58F9-452B-80BE-612C84F8B544}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91D41557-58F9-452B-80BE-612C84F8B544}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91D41557-58F9-452B-80BE-612C84F8B544}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3F071C2-251F-40BF-ABEE-FEE12440F9A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3F071C2-251F-40BF-ABEE-FEE12440F9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3F071C2-251F-40BF-ABEE-FEE12440F9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3F071C2-251F-40BF-ABEE-FEE12440F9A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AED5D418-2608-4039-A26B-18A056F0B360}
+	EndGlobalSection
+EndGlobal

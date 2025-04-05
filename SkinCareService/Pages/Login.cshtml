@@ -1,0 +1,52 @@
+﻿@page
+@model SkinCareService.Pages.LoginModel
+@{
+    ViewData["Title"] = "Đăng Nhập";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-light">
+                <div class="card-header text-center bg-primary text-white">
+                    <h4>Đăng Nhập</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post">
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="Email" class="form-control" placeholder="Nhập email của bạn" required />
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="password">Mật khẩu</label>
+                            <input type="password" id="password" name="Password" class="form-control" placeholder="Nhập mật khẩu của bạn" required />
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button type="submit" class="btn btn-primary w-100 py-2">Đăng Nhập</button>
+                        </div>
+
+                        @if (Model.LoginError)
+                        {
+                            <div class="alert alert-danger mt-3 text-center">
+                                Sai email hoặc mật khẩu hoặc bị khóa tài khoản! Hãy Thử lại.
+                            </div>
+                        }
+                    </form>
+
+                    <div class="text-center mt-3">
+                        <a href="#" class="text-primary">Quên mật khẩu?</a>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <p class="mb-0">Chưa có tài khoản? <a href="/Register" class="text-primary">Đăng ký ngay</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Thêm Bootstrap JS nếu cần -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
